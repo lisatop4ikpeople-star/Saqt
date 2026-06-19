@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.magic-bento-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 16px;
+  box-sizing: border-box;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(132, 0, 255, 0.28), transparent 35%),
+    radial-gradient(circle at 20% 20%, rgba(255, 0, 140, 0.18), transparent 30%),
+    radial-gradient(circle at 80% 80%, rgba(255, 210, 80, 0.14), transparent 28%),
+    #05020a;
+}
+
+.magic-bento-content {
+  position: relative;
+  z-index: 5;
+}
+
+.magic-bento-bg {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(70px);
+  opacity: 0.75;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.magic-bento-bg-1 {
+  width: 420px;
+  height: 420px;
+  background: rgba(132, 0, 255, 0.5);
+  top: 8%;
+  left: 8%;
+  animation: magicFloatOne 12s ease-in-out infinite alternate;
+}
+
+.magic-bento-bg-2 {
+  width: 360px;
+  height: 360px;
+  background: rgba(255, 0, 140, 0.35);
+  right: 10%;
+  bottom: 12%;
+  animation: magicFloatTwo 14s ease-in-out infinite alternate;
+}
+
+.magic-bento-bg-3 {
+  width: 280px;
+  height: 280px;
+  background: rgba(255, 210, 80, 0.25);
+  left: 50%;
+  bottom: 5%;
+  animation: magicFloatThree 16s ease-in-out infinite alternate;
+}
+
+.magic-bento-stars {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.45;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.9) 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(255, 217, 0, 0.8) 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(255, 0, 200, 0.8) 1px, transparent 1.5px);
+  background-size: 90px 90px, 140px 140px, 220px 220px;
+  background-position: 0 0, 40px 60px, 100px 140px;
+  animation: magicStarsMove 22s linear infinite;
+}
+
+.magic-bento-section::before {
+  content: '';
+  position: absolute;
+  inset: -40%;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent,
+      rgba(132, 0, 255, 0.12),
+      transparent,
+      rgba(255, 0, 140, 0.12),
+      transparent
+    );
+  animation: magicRotate 28s linear infinite;
+}
+
+.magic-bento-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent 25%, transparent 70%, rgba(0, 0, 0, 0.8)),
+    radial-gradient(circle at center, transparent 35%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+@keyframes magicFloatOne {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(120px, 80px, 0) scale(1.18);
+  }
+}
+
+@keyframes magicFloatTwo {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(-100px, -90px, 0) scale(1.15);
+  }
+}
+
+@keyframes magicFloatThree {
+  from {
+    transform: translate3d(-50%, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(-35%, -120px, 0) scale(1.25);
+  }
+}
+
+@keyframes magicStarsMove {
+  from {
+    background-position: 0 0, 40px 60px, 100px 140px;
+  }
+
+  to {
+    background-position: 300px 500px, -260px 360px, 420px -220px;
+  }
+}
+
+@keyframes magicRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .magic-bento-section {
+    padding: 40px 12px;
+  }
+
+  .magic-bento-bg-1 {
+    width: 260px;
+    height: 260px;
+  }
+
+  .magic-bento-bg-2 {
+    width: 240px;
+    height: 240px;
+  }
+
+  .magic-bento-bg-3 {
+    width: 200px;
+    height: 200px;
+  }
+}
+.magic-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
